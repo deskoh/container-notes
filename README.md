@@ -76,6 +76,9 @@ skopeo inspect --tls-verify=false docker://localhost:5000/busybox:latest
 skopeo list-tags docker://cr.io/node
 skopeo list-tags --tls-verify=false docker://localhost:5000/busybox
 
+# Copy from registry into `docker save` formatted file and re-tag
+skopeo copy docker://busybox:latest docker-archive:/home/user/busybox.tar:registry:5000/busybox:latest
+
 # Copy from registry to local directory
 skopeo copy docker://docker.io/busybox:latest dir:/tmp/images
 
