@@ -115,6 +115,32 @@ For OpenShift clusters, there are two challenges to providing decryption keys:
 
 * The keys should not be manually copied into worker node file systems.
 
+## Windows Notes
+
+* Use `--override-os=linux` flag to pull images for Linux OS
+
+* Registry interactive login bug: Use `-u` and `-p` flag to login to registry
+
+* Config files location
+
+  ```bat
+  # Location of /etc/containers (e.g. policy.json)
+  <root dir>\etc\containers\
+
+  # Location of `auth.json`
+  %USERPROFILE%\.config\containers\auth.json
+  ```
+
+* Default signing policy file to create in `<root dir>\etc\containers\policy.json`
+
+  ```json
+  {
+   "default": [{
+       "type": "insecureAcceptAnything"
+   }]
+  }
+  ```
+
 ## References
 
 [Deploy Containers From Encrypted Images in Red Hat OpenShift on IBM Cloud Clusters](https://www.ibm.com/cloud/blog/deploy-containers-from-encrypted-images-in-red-hat-openshift-on-ibm-cloud-clusters)
